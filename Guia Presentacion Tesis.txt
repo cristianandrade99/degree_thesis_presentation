@@ -1,3 +1,42 @@
-Introducción
+(1). INTRODUCCIÓN
 
-- Mención de casos en los que la huella dactilar de alguien no ha funcionado.
+1. Presentación.
+
+2. Mencionar casos en los que la huella dactilar de alguien no ha funcionado y explicar las razones por la cual eso ha sucedido. El problema se puede abordar desde la perspectiva del procesamiento de imágenes digital.
+
+3. Se va a desarrollar el modelo con inteligencia artificial ya que se han mostrado resultados muy buenos en el procesamiento de imágenes. Dos circunstancias han impulsado lo anterior:
+
+ --- Necesidad conocimiento en detalle del problema
+ --- End to end lo soluciona
+
+ --- Capacidad de cómputo alta.
+ --- La capacidad de cómputo se está volviendo disponible y asequible.
+
+(2). EXPLICACIÓN RED NEURONAL CONVOLUCIONAL
+
+1. Descripción de imagen digital y de su procesamiento mediante filtros.
+
+2. Concatenación de filtros para armar red.
+
+3. Convoluciones extraer características de bajo nivel a alto nivel (explicar) y convoluciones transpuestas para reconstruir.
+
+4. Ventajas con respecto a red neuronal estándar. Suena lógico utilizar convoluciones porque se está trabajando con imágenes. Pero también porcentaje parámetros.
+
+(3). ENTRENAMIENTO DEL MODELO
+
+1. Hay generador, discriminador, cuál se el objetivo de cada uno. Cómo se refleja esto en las funciones objetivo.
+
+2. La idea es que una optimización permite ajustar los filtros de esas convoluciones para obtener el resultado deseado mediante las funciones objetivo. componente reconstructivo y componente adversarial.
+
+3. Explicación origen de datos, montaje en TensorFlow, cluster de cómputo, iteraciones, parámetros.
+
+(4). RESULTADOS
+
+1. Imágenes de las reconstrucciones
+2. ROC
+3. CMC
+4. Calidad
+
+(5). MENCIÓN MODELO BAYESIANO VARIACIONAL.
+
+(5). Fin
