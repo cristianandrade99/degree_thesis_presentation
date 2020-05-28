@@ -26,7 +26,7 @@
 
 1. Hay generador, discriminador, cuál se el objetivo de cada uno. Cómo se refleja esto en las funciones objetivo.
 
-2. La idea es que una optimización permite ajustar los filtros de esas convoluciones para obtener el resultado deseado mediante las funciones objetivo. componente reconstructivo y componente adversarial.
+2. La idea es que una optimización permite ajustar los filtros de esas convoluciones para obtener el resultado deseado mediante las funciones objetivo. componente reconstructivo y componente adversarial. Regularización.
 
 3. Explicación origen de datos, montaje en TensorFlow, cluster de cómputo, iteraciones, parámetros.
 
