@@ -16,11 +16,13 @@
 
 1. Descripción de imagen digital y de su procesamiento mediante filtros.
 
+- los filtros pueden detectar bordes, direcciones, pasa bajas, pasa altas, etc.
+
 2. Concatenación de filtros para armar red.
 
 3. Convoluciones extraer características de bajo nivel a alto nivel (explicar) y convoluciones transpuestas para reconstruir.
 
-4. Ventajas con respecto a red neuronal estándar. Suena lógico utilizar convoluciones porque se está trabajando con imágenes. Pero también porcentaje parámetros.
+4. Ventajas con respecto a red neuronal estándar. Suena lógico utilizar convoluciones porque se está trabajando con imágenes. Pero también porcentaje parámetros. como es exponencial, chiste del coronavirus.
 
 (3). ENTRENAMIENTO DEL MODELO
 
