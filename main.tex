@@ -14,8 +14,10 @@
 % PRESENTATION INFO
 \title{Reconstrucción de Huellas Dactilares Digitales Utilizando un Modelo Generativo Adversarial Convolucional}
 \author{Cristian Yesid Andrade Hernández}
-\institute{Universidad de los Andes}
-\date{2020}
+\institute[Universidad de los Andes] 
+{ \includegraphics[width=5cm]{figs/uniandes_logo.png} }
+
+\date{\today}
 
 % DOCUMENT
 \begin{document}
@@ -170,6 +172,27 @@
 % ==== SLIDE 10 ====
 \begin{frame}{Entrenamiento del modelo}
 
+    Olimpia facilitó 19.800 huellas digitales. Estas imágenes fueron deterioradas artificialmente para conformar el dataset utilizado en el proceso de entrenamiento.
+    \vspace{5mm}
+
+    \begin{figure}[h]
+        \begin{subfigure}{0.48\textwidth}
+            \centering
+            \includegraphics[scale=0.24]{figs/deterioration_2.png}  
+            \caption{Deterioro por factor externo}
+        \end{subfigure}
+        \begin{subfigure}{0.48\textwidth}
+            \centering
+            \includegraphics[scale=0.24]{figs/deterioration_1.png}  
+            \caption{Deterioro de la piel}
+        \end{subfigure}
+    \end{figure}
+
+\end{frame}
+
+% ==== SLIDE 11 ====
+\begin{frame}{Entrenamiento del modelo}
+
     \begin{figure}[h]
         \includegraphics[scale=0.27]{figs/training_flow_gen.png}
         \caption{Cálculo de Costo del Generador}
@@ -182,7 +205,7 @@
 
 \end{frame}
 
-% ==== SLIDE 11 ====
+% ==== SLIDE 12 ====
 \begin{frame}{Entrenamiento del modelo}
 
      Función de costo asociada al generador del modelo.
@@ -198,7 +221,7 @@
 
 \end{frame}
 
-% ==== SLIDE 12 ====
+% ==== SLIDE 13 ====
 \begin{frame}{Entrenamiento del modelo}
 
     {\scriptsize
@@ -232,22 +255,12 @@
     
 \end{frame}
 
-% ==== SLIDE 13 ====
-\begin{frame}{Resultados}
-
-    \begin{figure}[h]
-        \includegraphics[scale=0.56]{figs/roc_comparison.png}
-        \caption{Receiver Operating Characteristic}
-    \end{figure}
-    
-\end{frame}
-
 % ==== SLIDE 14 ====
 \begin{frame}{Resultados}
 
     \begin{figure}[h]
-        \includegraphics[scale=0.56]{figs/cmc_comparison.png}
-        \caption{Cummulative Match Curve}
+        \includegraphics[scale=0.54]{figs/roc_comparison.png}
+        \caption{Receiver Operating Characteristic}
     \end{figure}
     
 \end{frame}
@@ -256,41 +269,27 @@
 \begin{frame}{Resultados}
 
     \begin{figure}[h]
-        \includegraphics[scale=0.56]{figs/mean_qualities.png}
-        \caption{Medida de Calidad de las Huellas}
+        \includegraphics[scale=0.54]{figs/cmc_comparison.png}
+        \caption{Cummulative Match Curve}
     \end{figure}
     
 \end{frame}
 
 % ==== SLIDE 16 ====
-\begin{frame}{Referencias}
+\begin{frame}{Resultados}
 
-{\tiny
-[1] C. Watson, M. Garris, E.T.C.W.R.M.S.J.K.K., 2007. User’s Guide to
-NIST Biometric Image Software. National Institute of Standards and
-Technology.\\
-[2] D. Maltoni, D. Maio, A.J., Prabhakar, S., 2009. Handbook of fingerprint recognition. Springer Science+Business Media.\\
-[3] NIST, 2019. Nist biometric image software (nbis).
-URL: https://www.nist.gov/services-resources/software/nist-biometric-image-software-nbis.\\
-[4] O. Ronneberger, P. Fischer, T.B., 2015. U-net: Convolutional networks
-for biomedical image segmentation. Computer Science Department and BIOSS Centre for Biological Signalling Studies, University of Freiburg, Germany.\\
-[5] P. Isola, J. Zhu, T.Z.A.E., 2016. Image-to-image translation with conditional adversarial networks arXiv:arXiv:1611.07004.\\
-[6] R.M. Bolle, J.H. Connell, S.P.N.R., Senior, A., 2005. The relation between the roc curve and the cmc, in: In Proc: Fourth IEEE Workshop on Automatic Identification Advanced Technologies Conference, Buffalo,
-NY, USA.
-}
+    \begin{figure}[h]
+        \includegraphics[scale=0.54]{figs/mean_qualities.png}
+        \caption{Medida de Calidad de las Huellas}
+    \end{figure}
     
 \end{frame}
 
-\end{document}
+% ==== SLIDES REFERENCIAS ====
+\nocite{*}
+\begin{frame}[allowframebreaks]{Referencias}
+\bibliographystyle{unsrt}
+\bibliography{referencias.bib}
+\end{frame}
 
-%command	8pt	9pt	10pt	11pt	12pt	14pt	17pt	20pt
-%tiny	5pt	5pt	5pt	6pt	6pt	6pt	8pt	10pt
-%scriptsize	5pt	6pt	7pt	8pt	8pt	8pt	10pt	12pt
-%footnotesize	6pt	7pt	8pt	9pt	10pt	10pt	12pt	14pt
-%small	7pt	8pt	9pt	10pt	11pt	12pt	14pt	17pt
-%normalsize	8pt	9pt	10pt	11pt	12pt	14pt	17pt	20pt
-%large	10pt	10pt	12pt	12pt	14pt	17pt	20pt	25pt
-%Large	11pt	11pt	14pt	14pt	17pt	20pt	25pt	29.86pt
-%LARGE	12pt	12pt	17pt	17pt	20pt	25pt	29.86pt	35.83pt
-%huge	14pt	14pt	20pt	20pt	25pt	29.86pt	35.83pt	42.99pt
-%Huge	17pt	17pt	25pt	25pt	25pt	35.83pt	42.99pt	51.59pt
+\end{document}
