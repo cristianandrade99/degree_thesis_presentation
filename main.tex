@@ -12,9 +12,9 @@
 \setbeamertemplate{footline}[frame number]
 
 % PRESENTATION INFO
-\title{Reconstrucción de Huellas Dactilares Digitales Utilizando un Modelo Generativo Adversarial Convolucional}
-\author{Cristian Yesid Andrade Hernández}
-\institute[Universidad de los Andes] 
+\title[Red Neuronal Convolucional Adversarial]{Reconstrucción de Huellas Dactilares Digitales Utilizando un Modelo Generativo Adversarial Convolucional}
+\author[Andrade, C]{Cristian Yesid Andrade Hernández}
+\institute[Universidad de los Andes]
 { \includegraphics[width=5cm]{figs/uniandes_logo.png} }
 
 \date{\today}
@@ -25,34 +25,31 @@
 % ==== INIT SLIDE ====
 \frame[plain]{\titlepage}
 
-% ==== SLIDE 2 ====
-\begin{frame}{Introducción}
-
-    Captura digital de impresión dactilar del dedo índice.
-
-    \begin{figure}[h]
-        \includegraphics[scale=0.15]{figs/dedo_lector_biometrico.jpg}
-        \caption{Lector Biométrico Óptico}
-    \end{figure}
-    
-\end{frame}
 
 % ==== SLIDE 3 ====
 \begin{frame}{Introducción}
 
-    Huellas dactilares digitalizadas con alguna condición de deterioro o modificación.
-    \vspace{5mm}
+    La captura digital de huellas dactilares puede resultar en imágenes deterioradas.
+    \vspace{3mm}
 
     \begin{figure}[h]
-        \begin{subfigure}{0.45\textwidth}
+        \begin{subfigure}{0.3\textwidth}
             \centering
-            \includegraphics[scale=0.4]{figs/deteriorada_1.jpg}  
-            \caption{Huella Borrosa}
+            \includegraphics[scale=0.12]{figs/dedo_lector_biometrico.jpg}
         \end{subfigure}
-        \begin{subfigure}{0.45\textwidth}
+        \begin{subfigure}{0.14\textwidth}
             \centering
-            \includegraphics[scale=0.42]{figs/deteriorada_0.png}  
+            $\longrightarrow$
+        \end{subfigure}
+        \begin{subfigure}{0.23\textwidth}
+            \centering
+            \includegraphics[scale=0.32]{figs/deteriorada_1.jpg}
             \caption{Huella Incompleta}
+        \end{subfigure}
+        \begin{subfigure}{0.23\textwidth}
+            \centering
+            \includegraphics[scale=0.3]{figs/deteriorada_0.png}
+            \caption{Huella Borrosa}
         \end{subfigure}
     \end{figure}
 
@@ -61,14 +58,20 @@
 % ==== SLIDE 4 ====
 \begin{frame}{Introducción}
 
+    Se propone reconstruir y mejorar la huella digital obtenida mediante red neuronal convolucional.
+    \vspace{3mm}
+
     \begin{figure}[h]
-        \includegraphics[scale=0.3]{figs/nvidia_card.png}
-        \caption{Capacidad de Cómputo: GPU}
-    \end{figure}
-    
-    \begin{figure}[h]
-        \includegraphics[scale=0.3]{figs/end_to_end.png}
-        \caption{Modelo end to end}
+        \begin{subfigure}{0.58\textwidth}
+            \centering
+            \includegraphics[scale=0.34]{figs/end_to_end.png}  
+            \caption{Modelo end to end}
+        \end{subfigure}
+        \begin{subfigure}{0.38\textwidth}
+            \centering
+            \includegraphics[scale=0.28]{figs/nvidia_card.png}  
+            \caption{Capacidad de Cómputo: GPU}
+        \end{subfigure}
     \end{figure}
 
 \end{frame}
@@ -79,7 +82,7 @@
     Composición de imagen digital de un canal.
 
     \begin{figure}[h]
-        \includegraphics[scale=0.45]{figs/huella_pixeles.png}
+        \includegraphics[scale=0.45]{figs/huella_pixeles_numeros.png}
         \caption{Huella Dactilar Digital}
     \end{figure}
 
@@ -87,84 +90,70 @@
 
 % ==== SLIDE 6 ====
 \begin{frame}{Red Neuronal Convolucional}
-
-    Lógica de la operación de convolución y convolución transpuesta en dos dimensiones aplicada a una imagen.
-
-    \begin{figure}[h]
-        \begin{subfigure}{0.45\textwidth}
-            \centering
-            \includegraphics[scale=0.325]{figs/conv_2d.jpg}  
-            \caption{Convolución}
-        \end{subfigure}
-        \begin{subfigure}{0.45\textwidth}
-            \centering
-            \includegraphics[scale=0.30]{figs/trans_conv.PNG}  
-            \caption{Convolución Transpuesta}
-        \end{subfigure}
-    \end{figure}
-
+    \begin{columns}[c] 
+        \column{.42\textwidth}
+        
+            \begin{figure}[h]
+                \includegraphics[scale=0.4]{figs/conv_2d.jpg}
+                \caption{Proceso de Convolución}
+            \end{figure}
+            
+        \column{.58\textwidth}
+        
+            \begin{itemize}
+                \item Características de bajo y alto nivel.
+                \vspace{4mm}
+                
+                \begin{figure}[h]
+                    \begin{subfigure}{0.21\textwidth}
+                        \centering
+                        \includegraphics[scale=0.1]{figs/fll_0.png}  
+                        \caption{Cresta Vertical}
+                    \end{subfigure}
+                    \begin{subfigure}{0.21\textwidth}
+                        \centering
+                        \includegraphics[scale=0.1]{figs/fll_1.png}  
+                        \caption{Cresta Horizontal}
+                    \end{subfigure}
+                    \begin{subfigure}{0.21\textwidth}
+                        \centering
+                        \includegraphics[scale=0.1]{figs/fhl_0.png}  
+                        \caption{Núcleo}
+                    \end{subfigure}
+                    \begin{subfigure}{0.21\textwidth}
+                        \centering
+                        \includegraphics[scale=0.1]{figs/fhl_1.png}  
+                        \caption{Delta}
+                    \end{subfigure}
+                \end{figure}
+                
+                \vspace{3mm}
+                
+                \item Parámetros:\\
+                Modelo convolucional: 15 millones\\
+                Perceptrón multicapa: 1000 millones
+            \end{itemize}
+            
+    \end{columns}
 \end{frame}
 
-% ==== SLIDE 7 ====
-\begin{frame}{Red Neuronal Convolucional}
+% ===
 
-    Ventajas de usar un modelo de capas convolucionales:
-    \vspace{5mm}
-    
-    \begin{itemize}
-        \item Características de bajo y alto nivel que se utilizan en la reconstrucción.
-        \vspace{4mm}
-        
-        \begin{figure}[h]
-            \begin{subfigure}{0.18\textwidth}
-                \centering
-                \includegraphics[scale=0.16]{figs/fll_0.png}  
-                \caption{Cresta Vertical}
-            \end{subfigure}
-            \begin{subfigure}{0.18\textwidth}
-                \centering
-                \includegraphics[scale=0.16]{figs/fll_1.png}  
-                \caption{Cresta Horizontal}
-            \end{subfigure}
-            \begin{subfigure}{0.18\textwidth}
-                \centering
-                \includegraphics[scale=0.16]{figs/fhl_0.png}  
-                \caption{Núcleo}
-            \end{subfigure}
-            \begin{subfigure}{0.18\textwidth}
-                \centering
-                \includegraphics[scale=0.16]{figs/fhl_1.png}  
-                \caption{Delta}
-            \end{subfigure}
-        \end{figure}
-        
-        \vspace{3mm}
-        
-        \item Modelo convolucional: 15 millones de parámetros. Perceptrón multicapa: 1000 millones de parámetros
-        
-    \end{itemize}
-
-\end{frame}
 
 % ==== SLIDE 8 ====
 \begin{frame}{Red Neuronal Convolucional}
 
-    Modelo convolucional de reconstrucción y mejora de impresiones dactilares digitales.
-
-    \begin{figure}[h]
-        \includegraphics[scale=0.42]{figs/layers_nn_u.PNG}
-        \caption{Autoencoder en Configuración U-Net (Generador)}
-    \end{figure}
-
-\end{frame}
-
-
-% ==== SLIDE 9 ====
-\begin{frame}{Red Neuronal Convolucional}
-
-    \begin{figure}[h]
-        \includegraphics[scale=0.4]{figs/disc_cuad.png}
-        \caption{Encoder en configuración PATCH (Discriminador)}
+   \begin{figure}[h]
+        \begin{subfigure}{0.62\textwidth}
+            \centering
+            \includegraphics[scale=0.34]{figs/layers_nn_u.PNG}  
+            \caption{Modelo de Reconstrucción Dactilar}
+        \end{subfigure}
+        \begin{subfigure}{0.36\textwidth}
+            \centering
+            \includegraphics[scale=0.25]{figs/disc_cuad.png} 
+            \caption{Discriminador Convolucional}
+        \end{subfigure}
     \end{figure}
 
 \end{frame}
@@ -221,24 +210,75 @@
 
 \end{frame}
 
-% ==== SLIDE 13 ====
+% ===========
 \begin{frame}{Entrenamiento del modelo}
+    \begin{columns}[c] 
+        \column{.7\textwidth}
+        
+            \begin{itemize}
+                \item Para el desarrollo del modelo se utilizó Python y el framework de machine learning TensorFlow.
+                \vspace{8mm}
+                \item Se utilizó la unidad de procesamiento gráfico NVIDIA Tesla K40 disponible el cluster de cómputo de la Universidad de los Andes.
+            \end{itemize}
+            
+        \column{.3\textwidth}
+        
+            \begin{figure}[h]
+                \includegraphics[scale=0.04]{figs/python}
+            \end{figure}
+            \vspace*{-4mm}
+            \begin{figure}[h]
+                \includegraphics[scale=0.3]{figs/tensorflow.png}
+            \end{figure}
+            \vspace*{-7mm}
+            \begin{figure}[h]
+                \includegraphics[scale=0.06]{figs/nvidia.png}
+            \end{figure}
+            
+    \end{columns}
+\end{frame}
 
-    {\scriptsize
-    El modelo se implementó utilizando el framework TensorFlow soportado en Python.
+% ==== SLIDE 14 ====
+\begin{frame}{Resultados}
 
-    \begin{figure}[h]
-        \begin{subfigure}{0.4\textwidth}
+    \begin{figure}
+        \begin{subfigure}{0.48\textwidth}
             \centering
-            \includegraphics[scale=0.2]{figs/tensorflow.png}
+            \includegraphics[scale=0.45]{figs/roc_comparison.png}
+            \caption{Receiver Operating Characteristic}
         \end{subfigure}
-        \begin{subfigure}{0.46\textwidth}
+        \begin{subfigure}{0.48\textwidth}
             \centering
-            \includegraphics[scale=0.03]{figs/python.png}  
+            \includegraphics[scale=0.45]{figs/cmc_comparison.png}  
+            \caption{Cummulative Match Curve}
         \end{subfigure}
     \end{figure}
+
+\end{frame}
+
+% ==== SLIDE 16 ====
+\begin{frame}{Resultados}
+
+    \begin{figure}[h]
+        \includegraphics[scale=0.52]{figs/mean_qualities.png}
+        \caption{Medida de Calidad de las Huellas}
+    \end{figure}
     
+\end{frame}
+
+% ==== SLIDES REFERENCIAS ====
+\nocite{*}
+\begin{frame}[allowframebreaks]{Referencias}
+\bibliographystyle{unsrt}
+\bibliography{referencias.bib}
+\end{frame}
+
+
+% ==== ANEXOS ====
+\begin{frame}{ANEXOS - Entrenamiento del modelo}
+
      Configuración del algoritmo de entrenamiento:
+     \vspace{5mm}
      
      \begin{itemize}
         \item Batch size: 48
@@ -250,46 +290,25 @@
         \item Épocas: 96
     \end{itemize}
     
-    Se utilizó la unidad de procesamiento gráfico NVIDIA Tesla K40 disponible el cluster de cómputo de la Universidad de los Andes.
-    }
-    
 \end{frame}
 
-% ==== SLIDE 14 ====
-\begin{frame}{Resultados}
+\begin{frame}{ANEXOS -  Convolución y convolución Transpuesta}
+
+    Lógica de la operación de convolución y convolución transpuesta en dos dimensiones aplicada a una imagen.
 
     \begin{figure}[h]
-        \includegraphics[scale=0.54]{figs/roc_comparison.png}
-        \caption{Receiver Operating Characteristic}
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[scale=0.325]{figs/conv_2d.jpg}  
+            \caption{Convolución}
+        \end{subfigure}
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[scale=0.30]{figs/trans_conv.PNG}  
+            \caption{Convolución Transpuesta}
+        \end{subfigure}
     \end{figure}
-    
-\end{frame}
 
-% ==== SLIDE 15 ====
-\begin{frame}{Resultados}
-
-    \begin{figure}[h]
-        \includegraphics[scale=0.54]{figs/cmc_comparison.png}
-        \caption{Cummulative Match Curve}
-    \end{figure}
-    
-\end{frame}
-
-% ==== SLIDE 16 ====
-\begin{frame}{Resultados}
-
-    \begin{figure}[h]
-        \includegraphics[scale=0.54]{figs/mean_qualities.png}
-        \caption{Medida de Calidad de las Huellas}
-    \end{figure}
-    
-\end{frame}
-
-% ==== SLIDES REFERENCIAS ====
-\nocite{*}
-\begin{frame}[allowframebreaks]{Referencias}
-\bibliographystyle{unsrt}
-\bibliography{referencias.bib}
 \end{frame}
 
 \end{document}
