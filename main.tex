@@ -10,6 +10,7 @@
 
 % CONFIGURATIONS
 \setbeamertemplate{footline}[frame number]
+\captionsetup{justification=centering}
 
 % PRESENTATION INFO
 \title[Red Neuronal Convolucional Adversarial]{Reconstrucción de Huellas Dactilares Digitales Utilizando un Modelo Generativo Adversarial Convolucional}
@@ -26,13 +27,13 @@
 \frame[plain]{\titlepage}
 
 
-% ==== SLIDE 3 ====
+% ==== SLIDE 2 ====
 \begin{frame}{Introducción}
 
     La captura digital de huellas dactilares puede resultar en imágenes deterioradas.
     \vspace{3mm}
 
-    \begin{figure}[h]
+    \begin{figure}
         \begin{subfigure}{0.3\textwidth}
             \centering
             \includegraphics[scale=0.12]{figs/dedo_lector_biometrico.jpg}
@@ -55,146 +56,138 @@
 
 \end{frame}
 
-% ==== SLIDE 4 ====
+% ==== SLIDE 3 ====
 \begin{frame}{Introducción}
 
     Se propone reconstruir y mejorar la huella digital obtenida mediante red neuronal convolucional.
     \vspace{3mm}
 
-    \begin{figure}[h]
+    \begin{figure}
         \begin{subfigure}{0.58\textwidth}
             \centering
-            \includegraphics[scale=0.34]{figs/end_to_end.png}  
+            \includegraphics[scale=0.34]{figs/end_to_end.png}
             \caption{Modelo end to end}
         \end{subfigure}
         \begin{subfigure}{0.38\textwidth}
             \centering
-            \includegraphics[scale=0.28]{figs/nvidia_card.png}  
+            \includegraphics[scale=0.28]{figs/nvidia_card.png}
             \caption{Capacidad de Cómputo: GPU}
         \end{subfigure}
     \end{figure}
 
 \end{frame}
 
-% ==== SLIDE 5 ====
+% ==== SLIDE 4 ====
 \begin{frame}{Red Neuronal Convolucional}
 
     Composición de imagen digital de un canal.
 
-    \begin{figure}[h]
+    \begin{figure}
         \includegraphics[scale=0.45]{figs/huella_pixeles_numeros.png}
         \caption{Huella Dactilar Digital}
     \end{figure}
 
 \end{frame}
 
-% ==== SLIDE 6 ====
+% ==== SLIDE 5 ====
 \begin{frame}{Red Neuronal Convolucional}
     \begin{columns}[c] 
         \column{.42\textwidth}
-        
-            \begin{figure}[h]
+            \begin{figure}
                 \includegraphics[scale=0.4]{figs/conv_2d.jpg}
                 \caption{Proceso de Convolución}
             \end{figure}
-            
         \column{.58\textwidth}
-        
             \begin{itemize}
                 \item Características de bajo y alto nivel.
                 \vspace{4mm}
                 
-                \begin{figure}[h]
+                \begin{figure}
                     \begin{subfigure}{0.21\textwidth}
                         \centering
-                        \includegraphics[scale=0.1]{figs/fll_0.png}  
+                        \includegraphics[scale=0.1]{figs/fll_0.png}
                         \caption{Cresta Vertical}
                     \end{subfigure}
                     \begin{subfigure}{0.21\textwidth}
                         \centering
-                        \includegraphics[scale=0.1]{figs/fll_1.png}  
+                        \includegraphics[scale=0.1]{figs/fll_1.png}
                         \caption{Cresta Horizontal}
                     \end{subfigure}
                     \begin{subfigure}{0.21\textwidth}
                         \centering
-                        \includegraphics[scale=0.1]{figs/fhl_0.png}  
+                        \includegraphics[scale=0.1]{figs/fhl_0.png}
                         \caption{Núcleo}
                     \end{subfigure}
                     \begin{subfigure}{0.21\textwidth}
                         \centering
-                        \includegraphics[scale=0.1]{figs/fhl_1.png}  
+                        \includegraphics[scale=0.1]{figs/fhl_1.png}
                         \caption{Delta}
                     \end{subfigure}
                 \end{figure}
-                
                 \vspace{3mm}
-                
                 \item Parámetros:\\
                 Modelo convolucional: 15 millones\\
                 Perceptrón multicapa: 1000 millones
             \end{itemize}
-            
     \end{columns}
+
 \end{frame}
 
-% ===
-
-
-% ==== SLIDE 8 ====
+% ==== SLIDE 6 ====
 \begin{frame}{Red Neuronal Convolucional}
 
-   \begin{figure}[h]
+   \begin{figure}
         \begin{subfigure}{0.62\textwidth}
             \centering
-            \includegraphics[scale=0.34]{figs/layers_nn_u.PNG}  
+            \includegraphics[scale=0.34]{figs/layers_nn_u.PNG}
             \caption{Modelo de Reconstrucción Dactilar}
         \end{subfigure}
         \begin{subfigure}{0.36\textwidth}
             \centering
-            \includegraphics[scale=0.25]{figs/disc_cuad.png} 
+            \includegraphics[scale=0.25]{figs/disc_cuad.png}
             \caption{Discriminador Convolucional}
         \end{subfigure}
     \end{figure}
 
 \end{frame}
 
-% ==== SLIDE 10 ====
+% ==== SLIDE 7 ====
 \begin{frame}{Entrenamiento del modelo}
 
     Olimpia facilitó 19.800 huellas digitales. Estas imágenes fueron deterioradas artificialmente para conformar el dataset utilizado en el proceso de entrenamiento.
     \vspace{5mm}
 
-    \begin{figure}[h]
+    \begin{figure}
         \begin{subfigure}{0.48\textwidth}
             \centering
-            \includegraphics[scale=0.24]{figs/deterioration_2.png}  
+            \includegraphics[scale=0.24]{figs/deterioration_2.png}
             \caption{Deterioro por factor externo}
         \end{subfigure}
         \begin{subfigure}{0.48\textwidth}
             \centering
-            \includegraphics[scale=0.24]{figs/deterioration_1.png}  
+            \includegraphics[scale=0.24]{figs/deterioration_1.png}
             \caption{Deterioro de la piel}
         \end{subfigure}
     \end{figure}
 
 \end{frame}
 
-% ==== SLIDE 11 ====
+% ==== SLIDE 8 ====
 \begin{frame}{Entrenamiento del modelo}
 
-    \begin{figure}[h]
+    \begin{figure}
         \includegraphics[scale=0.27]{figs/training_flow_gen.png}
         \caption{Cálculo de Costo del Generador}
     \end{figure}
     \vspace*{-5mm}
-    \begin{figure}[h]
+    \begin{figure}
         \includegraphics[scale=0.27]{figs/training_flow_disc.png}
         \caption{Cálculo de Costo del Discriminador}
     \end{figure}
 
 \end{frame}
 
-% ==== SLIDE 12 ====
+% ==== SLIDE 9 ====
 \begin{frame}{Entrenamiento del modelo}
 
      Función de costo asociada al generador del modelo.
@@ -210,35 +203,33 @@
 
 \end{frame}
 
-% ===========
+% ==== SLIDE 10 ====
 \begin{frame}{Entrenamiento del modelo}
+
     \begin{columns}[c] 
         \column{.7\textwidth}
-        
             \begin{itemize}
                 \item Para el desarrollo del modelo se utilizó Python y el framework de machine learning TensorFlow.
                 \vspace{8mm}
                 \item Se utilizó la unidad de procesamiento gráfico NVIDIA Tesla K40 disponible el cluster de cómputo de la Universidad de los Andes.
             \end{itemize}
-            
         \column{.3\textwidth}
-        
-            \begin{figure}[h]
+            \begin{figure}
                 \includegraphics[scale=0.04]{figs/python}
             \end{figure}
             \vspace*{-4mm}
-            \begin{figure}[h]
+            \begin{figure}
                 \includegraphics[scale=0.3]{figs/tensorflow.png}
             \end{figure}
             \vspace*{-7mm}
-            \begin{figure}[h]
+            \begin{figure}
                 \includegraphics[scale=0.06]{figs/nvidia.png}
             \end{figure}
-            
     \end{columns}
+
 \end{frame}
 
-% ==== SLIDE 14 ====
+% ==== SLIDE 11 ====
 \begin{frame}{Resultados}
 
     \begin{figure}
@@ -249,21 +240,38 @@
         \end{subfigure}
         \begin{subfigure}{0.48\textwidth}
             \centering
-            \includegraphics[scale=0.45]{figs/cmc_comparison.png}  
+            \includegraphics[scale=0.45]{figs/cmc_comparison.png}
             \caption{Cummulative Match Curve}
         \end{subfigure}
     \end{figure}
 
 \end{frame}
 
-% ==== SLIDE 16 ====
+% ==== SLIDE 12 ====
 \begin{frame}{Resultados}
 
-    \begin{figure}[h]
-        \includegraphics[scale=0.52]{figs/mean_qualities.png}
+    \begin{figure}
+        \includegraphics[scale=0.54]{figs/mean_qualities.png}
         \caption{Medida de Calidad de las Huellas}
     \end{figure}
     
+\end{frame}
+
+% ==== SLIDE 13 ====
+\begin{frame}{Resultados}
+
+    \begin{figure}
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[scale=0.22]{figs/recons_1.png}
+        \end{subfigure}
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[scale=0.22]{figs/recons_2.png}
+        \end{subfigure}
+        \caption{Reconstrucciones y mejoramientos exitosos}
+    \end{figure}
+
 \end{frame}
 
 % ==== SLIDES REFERENCIAS ====
@@ -273,8 +281,7 @@
 \bibliography{referencias.bib}
 \end{frame}
 
-
-% ==== ANEXOS ====
+% ==== ANEXO 1 ====
 \begin{frame}{ANEXOS - Entrenamiento del modelo}
 
      Configuración del algoritmo de entrenamiento:
@@ -292,19 +299,20 @@
     
 \end{frame}
 
+% ==== ANEXO 2 ====
 \begin{frame}{ANEXOS -  Convolución y convolución Transpuesta}
 
     Lógica de la operación de convolución y convolución transpuesta en dos dimensiones aplicada a una imagen.
 
-    \begin{figure}[h]
+    \begin{figure}
         \begin{subfigure}{0.45\textwidth}
             \centering
-            \includegraphics[scale=0.325]{figs/conv_2d.jpg}  
+            \includegraphics[scale=0.325]{figs/conv_2d.jpg}
             \caption{Convolución}
         \end{subfigure}
         \begin{subfigure}{0.45\textwidth}
             \centering
-            \includegraphics[scale=0.30]{figs/trans_conv.PNG}  
+            \includegraphics[scale=0.30]{figs/trans_conv.PNG}
             \caption{Convolución Transpuesta}
         \end{subfigure}
     \end{figure}
