@@ -45,12 +45,12 @@
         \begin{subfigure}{0.23\textwidth}
             \centering
             \includegraphics[scale=0.32]{figs/deteriorada_1.jpg}
-            \caption{Huella Incompleta}
+            \caption{Huella incompleta}
         \end{subfigure}
         \begin{subfigure}{0.23\textwidth}
             \centering
             \includegraphics[scale=0.3]{figs/deteriorada_0.png}
-            \caption{Huella Borrosa}
+            \caption{Huella borrosa}
         \end{subfigure}
     \end{figure}
 
@@ -59,7 +59,7 @@
 % ==== SLIDE 3 ====
 \begin{frame}{Introducción}
 
-    Se propone reconstruir y mejorar la huella digital obtenida mediante red neuronal convolucional.
+    Se propone reconstruir y mejorar la huella digital obtenida mediante una red neuronal convolucional.
     \vspace{3mm}
 
     \begin{figure}
@@ -71,7 +71,7 @@
         \begin{subfigure}{0.38\textwidth}
             \centering
             \includegraphics[scale=0.28]{figs/nvidia_card.png}
-            \caption{Capacidad de Cómputo: GPU}
+            \caption{Capacidad de cómputo: GPU}
         \end{subfigure}
     \end{figure}
 
@@ -84,7 +84,7 @@
 
     \begin{figure}
         \includegraphics[scale=0.45]{figs/huella_pixeles_numeros.png}
-        \caption{Huella Dactilar Digital}
+        \caption{Huella dactilar digital}
     \end{figure}
 
 \end{frame}
@@ -95,7 +95,7 @@
         \column{.42\textwidth}
             \begin{figure}
                 \includegraphics[scale=0.4]{figs/conv_2d.jpg}
-                \caption{Proceso de Convolución}
+                \caption{Proceso de convolución}
             \end{figure}
         \column{.58\textwidth}
             \begin{itemize}
@@ -106,12 +106,12 @@
                     \begin{subfigure}{0.21\textwidth}
                         \centering
                         \includegraphics[scale=0.1]{figs/fll_0.png}
-                        \caption{Cresta Vertical}
+                        \caption{Cresta vertical}
                     \end{subfigure}
                     \begin{subfigure}{0.21\textwidth}
                         \centering
                         \includegraphics[scale=0.1]{figs/fll_1.png}
-                        \caption{Cresta Horizontal}
+                        \caption{Cresta horizontal}
                     \end{subfigure}
                     \begin{subfigure}{0.21\textwidth}
                         \centering
@@ -125,9 +125,7 @@
                     \end{subfigure}
                 \end{figure}
                 \vspace{3mm}
-                \item Parámetros:\\
-                Modelo convolucional: 15 millones\\
-                Perceptrón multicapa: 1000 millones
+                
             \end{itemize}
     \end{columns}
 
@@ -140,66 +138,14 @@
         \begin{subfigure}{0.62\textwidth}
             \centering
             \includegraphics[scale=0.34]{figs/layers_nn_u.PNG}
-            \caption{Modelo de Reconstrucción Dactilar}
+            \caption{Componente que reconstruye y mejora las huellas \\ (Generador)}
         \end{subfigure}
         \begin{subfigure}{0.36\textwidth}
             \centering
             \includegraphics[scale=0.25]{figs/disc_cuad.png}
-            \caption{Discriminador Convolucional}
+            \caption{Componente de validación de huellas \\ (Discriminador)}
         \end{subfigure}
     \end{figure}
-
-\end{frame}
-
-% ==== SLIDE 7 ====
-\begin{frame}{Entrenamiento del modelo}
-
-    Olimpia facilitó 19.800 huellas digitales. Estas imágenes fueron deterioradas artificialmente para conformar el dataset utilizado en el proceso de entrenamiento.
-    \vspace{5mm}
-
-    \begin{figure}
-        \begin{subfigure}{0.48\textwidth}
-            \centering
-            \includegraphics[scale=0.24]{figs/deterioration_2.png}
-            \caption{Deterioro por factor externo}
-        \end{subfigure}
-        \begin{subfigure}{0.48\textwidth}
-            \centering
-            \includegraphics[scale=0.24]{figs/deterioration_1.png}
-            \caption{Deterioro de la piel}
-        \end{subfigure}
-    \end{figure}
-
-\end{frame}
-
-% ==== SLIDE 8 ====
-\begin{frame}{Entrenamiento del modelo}
-
-    \begin{figure}
-        \includegraphics[scale=0.27]{figs/training_flow_gen.png}
-        \caption{Cálculo de Costo del Generador}
-    \end{figure}
-    \vspace*{-5mm}
-    \begin{figure}
-        \includegraphics[scale=0.27]{figs/training_flow_disc.png}
-        \caption{Cálculo de Costo del Discriminador}
-    \end{figure}
-
-\end{frame}
-
-% ==== SLIDE 9 ====
-\begin{frame}{Entrenamiento del modelo}
-
-     Función de costo asociada al generador del modelo.
-    \begin{equation}
-        Gen_{loss} = \alpha||y-gen(x)||_{[1]} - log(disc(x,gen(x)))
-    \end{equation}
-    Función de costo asociada al discriminador del modelo.
-    \begin{equation}
-        Disc_{loss} = -log(1-disc(x,gen(x)))-log(disc(x,y))
-    \end{equation}
-    
-    El parámetro \textit{y} corresponde a la huella original, \textit{x} a la huella deteriorada y $\alpha$ define el peso del componente reconstructivo en la expresión.
 
 \end{frame}
 
@@ -229,6 +175,60 @@
 
 \end{frame}
 
+% ==== SLIDE 7 ====
+\begin{frame}{Entrenamiento del modelo}
+
+    Olimpia facilitó 19.800 huellas digitales las cuales fueron deterioradas artificialmente para conformar el dataset utilizado en el proceso de entrenamiento.
+    \vspace{5mm}
+
+    \begin{figure}
+        \begin{subfigure}{0.48\textwidth}
+            \centering
+            \includegraphics[scale=0.24]{figs/deterioration_2.png}
+            \caption{Deterioro por factor externo}
+        \end{subfigure}
+        \begin{subfigure}{0.48\textwidth}
+            \centering
+            \includegraphics[scale=0.24]{figs/deterioration_1.png}
+            \caption{Deterioro de la piel}
+        \end{subfigure}
+    \end{figure}
+
+\end{frame}
+
+% ==== SLIDE 8 ====
+\begin{frame}{Entrenamiento del modelo}
+
+    \begin{figure}
+        \includegraphics[scale=0.27]{figs/training_flow_gen.png}
+        \caption{Cálculo de costo del generador}
+    \end{figure}
+    \vspace*{-5mm}
+    \begin{figure}
+        \includegraphics[scale=0.27]{figs/training_flow_disc.png}
+        \caption{Cálculo de costo del discriminador}
+    \end{figure}
+
+\end{frame}
+
+% ==== SLIDE 9 ====
+\begin{frame}{Entrenamiento del modelo}
+
+    Costo del Generador:
+    \begin{equation}
+        \alpha||y-gen(x)||_{[1]} - log(disc(x,gen(x)))
+    \end{equation}
+    Costo del Discriminador:
+    \begin{equation}
+        -log(1-disc(x,gen(x)))-log(disc(x,y))
+    \end{equation}
+    
+    \vspace{5mm}
+    
+    El parámetro \textit{y} corresponde a la huella original, \textit{x} a la huella deteriorada y $\alpha$ define el peso del componente reconstructivo en la expresión.
+
+\end{frame}
+
 % ==== SLIDE 11 ====
 \begin{frame}{Resultados}
 
@@ -236,12 +236,12 @@
         \begin{subfigure}{0.48\textwidth}
             \centering
             \includegraphics[scale=0.45]{figs/roc_comparison.png}
-            \caption{Receiver Operating Characteristic}
+            \caption{Receiver operating characteristic}
         \end{subfigure}
         \begin{subfigure}{0.48\textwidth}
             \centering
             \includegraphics[scale=0.45]{figs/cmc_comparison.png}
-            \caption{Cummulative Match Curve}
+            \caption{Cummulative match curve}
         \end{subfigure}
     \end{figure}
 
@@ -252,7 +252,7 @@
 
     \begin{figure}
         \includegraphics[scale=0.54]{figs/mean_qualities.png}
-        \caption{Medida de Calidad de las Huellas}
+        \caption{Medida de calidad de las huellas}
     \end{figure}
     
 \end{frame}
@@ -313,10 +313,17 @@
         \begin{subfigure}{0.45\textwidth}
             \centering
             \includegraphics[scale=0.30]{figs/trans_conv.PNG}
-            \caption{Convolución Transpuesta}
+            \caption{Convolución transpuesta}
         \end{subfigure}
     \end{figure}
 
+\end{frame}
+
+% ==== ANEXO 3 ====
+\begin{frame}{ANEXOS - }
+    Parámetros:\\
+    Modelo convolucional: 15 millones\\
+    Perceptrón multicapa: 1000 millones
 \end{frame}
 
 \end{document}
