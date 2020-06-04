@@ -60,19 +60,11 @@
 \begin{frame}{Introducción}
 
     Se propone reconstruir y mejorar la huella digital obtenida mediante una red neuronal convolucional.
-    \vspace{3mm}
+    \vspace{5mm}
 
     \begin{figure}
-        \begin{subfigure}{0.58\textwidth}
-            \centering
-            \includegraphics[scale=0.34]{figs/end_to_end.png}
+            \includegraphics[scale=0.38]{figs/end_to_end.png}
             \caption{Modelo end to end}
-        \end{subfigure}
-        \begin{subfigure}{0.38\textwidth}
-            \centering
-            \includegraphics[scale=0.28]{figs/nvidia_card.png}
-            \caption{Capacidad de cómputo: GPU}
-        \end{subfigure}
     \end{figure}
 
 \end{frame}
@@ -149,7 +141,34 @@
 
 \end{frame}
 
-% ==== SLIDE 10 ====
+% ==== SLIDE 7 ====
+\begin{frame}{Entrenamiento del modelo}
+
+    Costo del Generador:
+    \begin{equation}
+        - log(disc(x,gen(x)))+\alpha||y-gen(x)||_{[1]}
+    \end{equation}
+    Costo del Discriminador:
+    \begin{equation}
+        -log(1-disc(x,gen(x)))-log(disc(x,y))
+    \end{equation}
+    
+    \vspace{5mm}
+    
+    El parámetro \textit{y} corresponde a la huella original, \textit{x} a la huella deteriorada y $\alpha$ define el peso del componente reconstructivo en la expresión.
+
+\end{frame}
+
+% ==== SLIDE 8 ====
+\begin{frame}{Entrenamiento del modelo}
+
+    \begin{figure}
+        \includegraphics[scale=0.26]{figs/training_flow_overall.png}
+    \end{figure}
+
+\end{frame}
+
+% ==== SLIDE 9 ====
 \begin{frame}{Entrenamiento del modelo}
 
     \begin{columns}[c] 
@@ -175,7 +194,7 @@
 
 \end{frame}
 
-% ==== SLIDE 7 ====
+% ==== SLIDE 10 ====
 \begin{frame}{Entrenamiento del modelo}
 
     Olimpia facilitó 19.800 huellas digitales las cuales fueron deterioradas artificialmente para conformar el dataset utilizado en el proceso de entrenamiento.
@@ -193,33 +212,6 @@
             \caption{Deterioro de la piel}
         \end{subfigure}
     \end{figure}
-
-\end{frame}
-
-% ==== SLIDE 8 ====
-\begin{frame}{Entrenamiento del modelo}
-
-    \begin{figure}
-        \includegraphics[scale=0.26]{figs/training_flow_overall.png}
-    \end{figure}
-
-\end{frame}
-
-% ==== SLIDE 9 ====
-\begin{frame}{Entrenamiento del modelo}
-
-    Costo del Generador:
-    \begin{equation}
-        - log(disc(x,gen(x)))+\alpha||y-gen(x)||_{[1]}
-    \end{equation}
-    Costo del Discriminador:
-    \begin{equation}
-        -log(1-disc(x,gen(x)))-log(disc(x,y))
-    \end{equation}
-    
-    \vspace{5mm}
-    
-    El parámetro \textit{y} corresponde a la huella original, \textit{x} a la huella deteriorada y $\alpha$ define el peso del componente reconstructivo en la expresión.
 
 \end{frame}
 
@@ -265,6 +257,28 @@
         \end{subfigure}
         \caption{Reconstrucciones y mejoramientos exitosos}
     \end{figure}
+
+\end{frame}
+
+% ==== SLIDE 14 ====
+\begin{frame}{Producción}
+
+\end{frame}
+
+% ==== SLIDE 15 ====
+\begin{frame}{Componente Bayesiano}
+
+\end{frame}
+
+% ==== SLIDE 16 ====
+\begin{frame}{Trabajo Futuro}
+
+    \begin{itemize}
+        \setlength\itemsep{5mm}
+        \item Desarrollo de algoritmos más sofisticados para el deterioro artificial.
+        \item Utilizar la binarización proporcionada por el SDK de NeuroTec como el objetivo de la reconstrucción.
+        \item Conformar un dataset con deterioros reales y las correspondientes huellas originales.
+    \end{itemize}
 
 \end{frame}
 
@@ -314,8 +328,7 @@
 \end{frame}
 
 % ==== ANEXO 3 ====
-\begin{frame}{ANEXOS - }
-    Parámetros:\\
+\begin{frame}{ANEXOS - Parámetros}
     Modelo convolucional: 15 millones\\
     Perceptrón multicapa: 1000 millones
 \end{frame}
