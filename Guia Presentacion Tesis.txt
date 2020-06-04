@@ -45,28 +45,32 @@
 
 ========================== GUIÓN ==============================
 
-Buenas tardes, mi nombre es Cristian Andrade, llevo dos meses trabajando como Analista de Ciencia de Datos en Olimpia y hoy quiero presentarles mi proyecto de grado con el cual culmino la carrera de Ingeniería Electrónica.
+0 - [Inicio] Buenas tardes, mi nombre es Cristian Andrade, llevo dos meses trabajando como Analista de Ciencia de Datos en Olimpia y hoy quiero presentarles mi proyecto de grado con el cual culmino la carrera de Ingeniería Electrónica.
 
-Gran parte de los trámites que realizamos como ciudadanos requieren que validemos nuestra identidad mediante la huella dactilar. Muchas veces la imagen obtenida es incorrecta debido a que la huella se modifico por una quemadura o una enfermedad de la piel o cierto factor hizo que la imagen resultara borrosa o incompleta. Esto hace que el sistema no identifique correctamente a las personas lo que dificulta la realización del proceso.
+1 - [Lector Biométrico] Gran parte de los trámites que realizamos como ciudadanos requieren que validemos nuestra identidad mediante la huella dactilar. Muchas veces la imagen obtenida es incorrecta debido a que la huella se modifico por una quemadura o una enfermedad de la piel o cierto factor hizo que la imagen resultara borrosa o incompleta. Esto hace que el sistema no identifique correctamente a las personas lo que dificulta la realización del proceso.
 
-Para solucionar este problema decidí implementar una red neural convolucional que reconstruye huellas dactilares que se encuentran deterioradas.
+2 - [End to End] Para solucionar este problema decidí implementar una red neural convolucional que reconstruye huellas dactilares digitales que se encuentran deterioradas.
 
-Para comenzar quiero que recordemos qué es una imagen digital. Una imagen digital es un conjunto de píxeles agrupados uno al lado de otro formando una estructura que generalmente es rectangular. En una impresión dactilar cada píxel es un valor numérico indica que tanta cantidad de color blanco o negro hay en la imagen.
+3 - [Pixeles Huella] Para comenzar quiero que recordemos qué es una imagen digital. Una imagen digital es un conjunto de píxeles agrupados uno al lado de otro formando una estructura que generalmente es rectangular. En una impresión dactilar cada píxel es un valor numérico indica que tanta cantidad de color blanco o negro hay en la imagen.
 
-Ahora bien, el modelo modifica la imagen de la huella dactilar a través de convoluciones. La convolución es una operación matemática en la que se toma un conjunto de valores numéricos distribuidos en una cuadrícula y se multiplican por los pixeles correspondientes de la imagen original. Los resultados de las multiplicaciones se suman para obtener un pixel de la imagen procesada. El proceso se repite por toda la imagen original para obtener todos los pixeles de la imagen resultante. A esta cuadrícula de valores que realiza el procesamiento se le denomina filtro.
+4 - [Convolución] Ahora bien, el modelo modifica la imagen de la huella dactilar a través de convoluciones. La convolución es una operación matemática en la que se toma un conjunto de valores numéricos distribuidos en una cuadrícula y se multiplican por los pixeles correspondientes de la imagen original. Los resultados de las multiplicaciones se suman para obtener un pixel de la imagen procesada. El proceso se repite por toda la imagen original para obtener todos los pixeles de la imagen resultante. A esta cuadrícula de valores que realiza el procesamiento se le denomina filtro.
 
-La convolución es muy conveniente porque permite extraer las crestas y los valles que forman los patrones de la huella, las distintas formas que vemos en una huella. Esta información es posteriormente procesada utilizando también convoluciones lo que finalmente resulta en la imagen reconstruida y mejorada.
+4 - [Convolución] La convolución es muy conveniente porque permite extraer las crestas y los valles que forman los patrones de la huella, que son las distintas formas que vemos en una huella. Esta información es posteriormente procesada utilizando también convoluciones lo que finalmente resulta en la imagen reconstruida y mejorada.
 
-Concretamente el modelo consiste en un conjunto de filtros que aplican la operación de la convolución consecutivamente a la imagen de entrada hasta que se obtiene la huella reconstruida. El objetivo principal es encontrar el valor óptimo de los parámetros de cada filtro de tal forma que se obtenga el procesamiento deseado.
+5 - [Generador - Discriminador] Concretamente el modelo consiste en un conjunto de filtros que aplican la operación de la convolución consecutivamente a la imagen de entrada hasta que se obtiene la huella reconstruida. El objetivo principal es encontrar el valor óptimo de los parámetros de cada filtro de tal forma que se obtenga el procesamiento deseado.
 
-En la figura de la izquierda podemos ver el módulo que reconstruye las huellas al cual llamaremos de ahora en adelante generador. A la derecha observamos un segundo módulo convolucional que se denomina discriminador. El objetivo de este segundo modulo es indicar si una huella dactilar corresponde a una correcta reconstrucción.
+5 - [Generador - Discriminador] En la figura de la izquierda podemos ver el módulo que reconstruye las huellas al cual llamaremos de ahora en adelante como generador. A la derecha observamos un segundo módulo convolucional que se denomina discriminador cuyo objetivo es decidir si una huella está correctamente reconstruida o no. La idea principal es formular un problema de optimización en el que se minimizan dos funciones de costo que en conjunto expresan una competencia entre el generador y el discriminador, de ahí el término adversarial.
 
-La idea principal es plantear una competencia entre el generador y el discriminador, de ahí el término adversarial. Para esto se formula un problema de optimización en el que el generador busca engañar al discriminador indicándole que el resultado del procesamiento de la imagen deteriorada es efectivamente una huella dactilar correctamente reconstruida. Como respuesta, el discriminador indica que la huella procesada por el generador no está correctamente reconstruida y que por el contrario las huellas que sí están bien reconstruidas solamente corresponden a las imágenes originales.
+6 - [Funciones Costos] Al minimizar estas dos funciones de costo al mismo tiempo durante un número de iteraciones determinado, tanto el generador como el discriminador mejoran su desempeño. En la primera ecuación, el generador busca engañar al discriminador indicándole que el resultado del procesamiento de la imagen deteriorada es efectivamente una huella dactilar correctamente reconstruida. Por el contrario, en la segunda ecuación, el discriminador indica que la huella procesada por el generador no está correctamente reconstruida y que las huellas que sí están bien reconstruidas solamente corresponden a las imágenes originales. Si alguien tiene la inquietud, al finalizar la presentación podemos revisar con más detalle el planteamiento matemático de cada función de costo.
 
+7 - [Diagrama Flujo] En el siguiente diagrama se resume el proceso de entrenamiento del modelo. Se deteriora artificialmente la huella original, esta huella se reconstruye con el generador y la huella obtenida se evalúa a través del discriminador. La huella original, la huella reconstruida y el resultado del discriminador se utilizan para evaluar la función de costo y luego optimizar los filtros del generador. Seguido a esto se pasa por el discriminador la huella original así como la huella reconstruida para evaluar la segunda función de costo y así actualizar los parámetros del discriminador. Finalmente, el proceso se repite hasta obtener las reconstrucciones deseadas.
 
+8 - [Recursos] Para el desarrollo del modelo se utilizó Python, el framework de machine learning Tensorflow y el cluster de cómputo de alto desempeño de la Universidad de los Andes.
 
-Aquí podemos observar la formulación matemática de este planteamiento adversarial. 
+9 - [Datos] Las imágenes utilizadas en el entrenamiento del modelo fueron proporcionadas por Olimpia bajo todos los protocolos de seguridad. Se realizó un preprocesamiento digital de las imágenes para generar dos tipos de deterioro artificial en las huellas. Uno causado por un factor externo y otro simulando un deterioro directamente en la piel.
 
-se muestra la formulación matemática indicando que hay que minimizar las funciones.
+10 - [Resultados]
 
-Se muestra el resumen con el flow chart.
+10 - [Resultados]
+
+11 - [Trabajo futuro]

@@ -200,13 +200,7 @@
 \begin{frame}{Entrenamiento del modelo}
 
     \begin{figure}
-        \includegraphics[scale=0.27]{figs/training_flow_gen.png}
-        \caption{Cálculo de costo del generador}
-    \end{figure}
-    \vspace*{-5mm}
-    \begin{figure}
-        \includegraphics[scale=0.27]{figs/training_flow_disc.png}
-        \caption{Cálculo de costo del discriminador}
+        \includegraphics[scale=0.26]{figs/training_flow_overall.png}
     \end{figure}
 
 \end{frame}
@@ -216,7 +210,7 @@
 
     Costo del Generador:
     \begin{equation}
-        \alpha||y-gen(x)||_{[1]} - log(disc(x,gen(x)))
+        - log(disc(x,gen(x)))+\alpha||y-gen(x)||_{[1]}
     \end{equation}
     Costo del Discriminador:
     \begin{equation}
