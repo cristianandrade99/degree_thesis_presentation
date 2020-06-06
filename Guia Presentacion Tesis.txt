@@ -2,13 +2,13 @@
 
 1 - [Inicio] Buenas tardes, mi nombre es Cristian Andrade, llevo dos meses trabajando como Analista de Ciencia de Datos en Olimpia y hoy quiero presentarles mi proyecto de grado con el cual culmino la carrera de Ingeniería Electrónica.
 
-2 - [Lector Biométrico] Gran parte de los trámites que realizamos como ciudadanos requieren que validemos nuestra identidad mediante la huella dactilar. Muchas veces la imagen obtenida es incorrecta debido a que la huella se modifico por una quemadura o una enfermedad de la piel o cierto factor hizo que la imagen resultara borrosa o incompleta. Esto hace que el sistema no identifique correctamente a las personas lo que dificulta la realización del proceso.
+2 - [Lector Biométrico] Gran parte de los trámites que realizamos como ciudadanos requieren que validemos nuestra identidad mediante la lectura digital de la huella dactilar. Muchas veces la imagen obtenida es incorrecta debido a que la huella se modifico por una quemadura o una enfermedad de la piel o cierto factor hizo que la imagen resultara distorsionada o incompleta. Esto hace que el sistema no identifique correctamente a las personas lo que dificulta la realización del proceso.
 
-3 - [End to End] Para solucionar este problema decidí implementar una red neural convolucional que reconstruye huellas dactilares digitales que se encuentran deterioradas.
+3 - [End to End] Para solucionar este problema decidí implementar una red neural convolucional que reconstruye y restaura huellas dactilares digitales que se encuentran deterioradas.
 
 4 - [Pixeles Huella] Para comenzar quiero que recordemos qué es una imagen digital. Una imagen digital es un conjunto de píxeles agrupados uno al lado de otro formando una estructura que generalmente es rectangular. En una impresión dactilar cada píxel es un valor numérico que indica la cantidad de color blanco o negro hay en la imagen.
 
-5 - [Convolución] Ahora bien, el modelo modifica la imagen de la huella dactilar a través de convoluciones. La convolución es una operación matemática en la que se toma un conjunto de valores numéricos distribuidos en una cuadrícula y se multiplican por los pixeles correspondientes de la imagen original. Los resultados de las multiplicaciones se suman para obtener un pixel de la imagen procesada. El proceso se repite por toda la imagen original para obtener todos los pixeles de la imagen resultante. A esta cuadrícula de valores que realiza el procesamiento se le denomina filtro.
+5 - [Convolución] El modelo procesa las huellas a través de la convolución. La convolución es una operación matemática en la que se utiliza un filtro para modificar una imagen. En dicha operación se multiplican los parámetros del filtro por los pixeles de toda imagen original para obtener cada uno de los pixeles de la imagen procesada. 
 
 5 - [Convolución] La convolución es muy conveniente porque permite extraer las crestas y los valles que forman los patrones de la huella, que son las distintas formas que vemos en una huella. Esta información es posteriormente procesada utilizando también convoluciones lo que finalmente resulta en la imagen reconstruida y mejorada.
 
@@ -49,3 +49,6 @@ Ahora bien, no podemos terminar sin ver cómo queda una huella reconstruida. Aqu
 Se podrían desarrollar algoritmos más sofisticados para el deterioro de las huellas de tal manera que se cuente con datos de entrenamiento más reales.
 
 Adicionalmente, se podría utilizar la binarización de las huellas que proporciona el software biométrico NEUROTEC para utilizarla como la imagen objetivo de la reconstrucción. Esto permitiría que el modelo identificara de una manera más clara las crestas y los valles que debe restaurar.
+
+=========== OPCIONAL ====================
+Ahora bien, el modelo modifica la imagen de la huella dactilar a través de convoluciones. La convolución es una operación matemática en la que se toma un conjunto de valores numéricos distribuidos en una cuadrícula y se multiplican por los pixeles correspondientes de la imagen original. Los resultados de las multiplicaciones se suman para obtener un pixel de la imagen procesada. El proceso se repite por toda la imagen original para obtener todos los pixeles de la imagen resultante. A esta cuadrícula de valores que realiza el procesamiento se le denomina filtro.
