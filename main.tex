@@ -272,13 +272,53 @@
 \end{frame}
 
 % ==== SLIDE 14 ====
-\begin{frame}{Prueba en Raspberry PI}
+\begin{frame}{Test de Carga Computacional}
+
+    Restauración de 300 huellas dactilares.
+
+    \begin{columns}[c] 
+        \column{0.6\textwidth}
+            \begin{figure}
+            \begin{subfigure}{0.45\textwidth}
+                \centering
+                \includegraphics[scale=0.11]{figs/RAM RB.png}
+                %\caption{RAM Raspberry PI}
+            \end{subfigure}
+            \begin{subfigure}{0.45\textwidth}
+                \centering
+                \includegraphics[scale=0.11]{figs/Tiempo RB.png}
+                %\caption{Tiempo Raspberry PI}
+            \end{subfigure}
+            \\
+            \begin{subfigure}{0.45\textwidth}
+                \centering
+                \includegraphics[scale=0.11]{figs/RAM Servidor.png}
+                %\caption{RAM Servidor}
+            \end{subfigure}
+            \begin{subfigure}{0.45\textwidth}
+                \centering
+                \includegraphics[scale=0.11]{figs/Tiempo Servidor.png}
+                %\caption{Tiempo Servidor}
+            \end{subfigure}
+            \end{figure}
+        \column{0.4\textwidth}
+            Raspberry PI\\
+            \begin{itemize}
+            \item RAM promedio por huella: 593 MB
+            \item Tiempo promedio de reconstrucción: 1.4 s
+            \end{itemize}
+            Servidor\\
+            \begin{itemize}
+            \item RAM promedio por huella: 612 MB
+            \item Tiempo promedio de reconstrucción: 0.2 s
+            \end{itemize}
+    \end{columns}
 
 \end{frame}
 
 % ==== SLIDE 15 ====
 \begin{frame}{Arquitectura bayesiana}
-
+    
 \end{frame}
 
 % ==== SLIDE 16 ====

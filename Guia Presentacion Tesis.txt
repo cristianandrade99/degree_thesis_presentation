@@ -2,13 +2,13 @@
 
 1 - [Inicio] Buenas tardes, mi nombre es Cristian Andrade, llevo dos meses trabajando como Analista de Ciencia de Datos en Olimpia y hoy quiero presentarles mi proyecto de grado con el cual culmino la carrera de Ingeniería Electrónica.
 
-2 - [Introducción] Gran parte de los trámites que realizamos como ciudadanos requieren que validemos nuestra identidad mediante la lectura digital de la huella dactilar. Muchas veces la imagen obtenida es incorrecta debido a que la huella se modifico por una quemadura o una enfermedad de la piel o cierto factor hizo que la imagen resultara distorsionada o incompleta. Esto hace que el sistema no identifique correctamente a las personas lo que dificulta la realización del proceso.
+2 - [Introducción] Gran parte de los trámites que realizamos como ciudadanos requieren que validemos nuestra identidad mediante la captura de la huella dactilar. Muchas veces la imagen obtenida resulta ilegible debido a que la huella está modificada por una quemadura o una enfermedad de la piel o cierto factor hizo que la imagen resultara distorsionada o incompleta. Esto hace que el sistema no identifique correctamente a las personas lo que dificulta la realización del proceso.
 
 3 - [Red neuronal convolucional] Para solucionar este problema decidí implementar una red neural convolucional que reconstruye y restaura huellas dactilares digitales que se encuentran deterioradas.
 
 4 - [Imagen digital] Para comenzar quiero que recordemos qué es una imagen digital. Una imagen digital es un conjunto de píxeles agrupados uno al lado de otro formando una estructura que generalmente es rectangular. En una impresión dactilar cada píxel es un valor numérico que indica la cantidad de color blanco o negro hay en la imagen.
 
-5 - [Convolución] El modelo procesa las huellas a través de la convolución. La convolución es una operación matemática en la que se utiliza un filtro para modificar una imagen. En dicha operación se multiplican y se suman los parámetros del filtro y los pixeles de toda imagen original, esto para obtener cada uno de los pixeles de la imagen procesada. 
+5 - [Convolución] El modelo procesa las huellas a través de la convolución. La convolución es una operación matemática en la que se utiliza un filtro para modificar la imagen. En dicha operación se multiplican y se suman los parámetros del filtro y los pixeles de una región de imagen original. Este proceso se repite por toda la imagen para obtener cada uno de los pixeles de la imagen procesada. 
 
 5 - [Convolución] La convolución es muy conveniente porque permite extraer las crestas y los valles que forman los patrones de la huella. Esta información se procesa también mediante convoluciones lo que finalmente resulta en la imagen reconstruida y mejorada.
 
@@ -40,7 +40,9 @@ La tercera métrica consistió en medir la calidad promedio de las huella antes 
 
 Ahora bien, no podemos terminar sin ver cómo queda una huella reconstruida. Aquí vemos que el modelo pudo restablecer las regiones deterioradas dibujando las crestas que habían desaparecido. Adicionalmente, encontramos que el ruido de las imágenes fue eliminado lo que mejoró la claridad y la calidad de las huellas.
 
-14 - [Prueba en Raspberry PI]
+14 - [Test de Carga Computacional]
+
+Para analizar la carga computacional que requiere la reconstrucción de las huellas se midió el tiempo y la memoria RAM requeridos para procesar 300 huellas. Primero se utilizó la Raspberry PI en un micro computador que se utiliza para implementar prototipos tecnológicos portables. En este la reconstrucción de la huella consume aproximadamente 593 MB de RAM y el tiempo promedio por huella es de 1.4 segundos. Por otro lado se utilizó un computador de escritorio para simular un servidor en el que se implementa una API y en este la RAM consumida fue de 612 MB y el tiempo de reconstrucción promedio por huella fue de 0.2 segundos.
 
 15 - [Arquitectura bayesiana]
 
