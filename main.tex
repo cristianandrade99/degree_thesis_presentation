@@ -135,17 +135,20 @@
 \end{frame}
 
 % ==== SLIDE 6.2 ====
-\begin{frame}{Arquitectura}
+\begin{frame}{Arquitectura Adversarial}
 
    \begin{figure}
-        \begin{subfigure}{0.62\textwidth}
+        \begin{subfigure}{0.54\textwidth}
             \centering
-            \includegraphics[scale=0.34]{figs/layers_nn_u.PNG}
+            \includegraphics[scale=0.3]{figs/layers_nn_u.PNG}
             \caption{Componente que reconstruye y mejora las huellas \\ (Generador)}
         \end{subfigure}
-        \begin{subfigure}{0.36\textwidth}
+        \begin{subfigure}{0.1\textwidth}
+            \centering VS
+        \end{subfigure}
+        \begin{subfigure}{0.3\textwidth}
             \centering
-            \includegraphics[scale=0.25]{figs/disc_cuad.png}
+            \includegraphics[scale=0.22]{figs/disc_cuad.png}
             \caption{Componente de validación de huellas \\ (Discriminador)}
         \end{subfigure}
     \end{figure}
@@ -180,14 +183,20 @@
 \end{frame}
 
 % ==== SLIDE 9 ====
-\begin{frame}{Software y hardware}
+\begin{frame}{Datos de entrenamiento, software y hardware}
 
     \begin{columns}[c] 
         \column{.7\textwidth}
             \begin{itemize}
-                \item Para el desarrollo del modelo se utilizó Python y el framework de machine learning TensorFlow.
-                \vspace{8mm}
-                \item Se utilizó la unidad de procesamiento gráfico NVIDIA Tesla K40 disponible el cluster de cómputo de la Universidad de los Andes.
+                \item 100.000 Huellas proporcionadas por Olimpia.
+                \vspace{3mm}
+                \item Entrenamiento: 18.000 - Validación: 2.000
+                \vspace{3mm}
+                \item Software: Python y TensorFlow
+                \vspace{3mm}
+                \item Hardware: Cluster de cómputo de la Universidad de los Andes. Nvidia Tesla K40
+                \vspace{3mm}
+                \item Tiempo de entrenamiento: 1 día, 27 horas y 32 minutos.
             \end{itemize}
         \column{.3\textwidth}
             \begin{figure}
@@ -206,9 +215,9 @@
 \end{frame}
 
 % ==== SLIDE 10 ====
-\begin{frame}{Datos de entrenamiento}
+\begin{frame}{Deterioro Artificial}
 
-    Olimpia facilitó 19.800 huellas digitales las cuales fueron deterioradas artificialmente para conformar el dataset utilizado en el proceso de entrenamiento.
+    Las huellas dactilares fueron deterioradas artificialmente para conformar el dataset utilizado en el proceso de entrenamiento.
     \vspace{5mm}
 
     \begin{figure}
@@ -318,6 +327,25 @@
 
 % ==== SLIDE 15 ====
 \begin{frame}{Arquitectura bayesiana}
+
+    Función de costo del generador:
+    \begin{equation}
+        - log(disc(x,gen(x)))+\alpha||y-gen(x)||_{[1]}-\textcolor{red}{\beta(1+log(\sigma^{2})-\sigma^{2}-\mu^{2})}
+    \end{equation}
+    
+    \begin{columns}[c] 
+        \column{0.45\textwidth}
+            \begin{figure}
+                \includegraphics[scale=0.26]{figs/latent_vector.png}
+                \caption{Obtención de $\mu$ y $\sigma$}
+            \end{figure}
+        \column{0.55\textwidth}
+            \begin{itemize}
+                \item Aproximación de la distribución de probabilidad de huellas - $P(\mu,\sigma)$
+                \vspace{10mm}
+                \item Regularización que disminuye el overfitting del modelo.
+            \end{itemize}
+    \end{columns}
     
 \end{frame}
 
