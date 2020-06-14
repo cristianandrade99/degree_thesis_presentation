@@ -26,7 +26,6 @@
 % ==== INIT SLIDE ====
 \frame[plain]{\titlepage}
 
-
 % ==== SLIDE 2 ====
 \begin{frame}{Introducción}
 
@@ -65,6 +64,24 @@
     \begin{figure}
             \includegraphics[scale=0.38]{figs/end_to_end.png}
             \caption{Modelo end to end}
+    \end{figure}
+
+\end{frame}
+
+% ==== SLIDE 4 ====
+\begin{frame}{Modelos Generativos Adversariales}
+
+    \begin{figure}
+        \begin{subfigure}{0.48\textwidth}
+            \centering
+            \includegraphics[scale=0.23]{figs/superresolution_example.png}
+            \caption{Súper resolución}
+        \end{subfigure}
+        \begin{subfigure}{0.48\textwidth}
+            \centering
+            \includegraphics[scale=0.23]{figs/personas_inexistentes.png}
+            \caption{Personas inexistentes}
+        \end{subfigure}
     \end{figure}
 
 \end{frame}
@@ -267,15 +284,7 @@
 \begin{frame}{Huellas restauradas}
 
     \begin{figure}
-        \begin{subfigure}{0.45\textwidth}
-            \centering
-            \includegraphics[scale=0.22]{figs/recons_1.png}
-        \end{subfigure}
-        \begin{subfigure}{0.45\textwidth}
-            \centering
-            \includegraphics[scale=0.22]{figs/recons_2.png}
-        \end{subfigure}
-        \caption{Reconstrucciones y mejoramientos exitosos}
+        \includegraphics[scale=0.38]{figs/reconstruccion_labels.png}
     \end{figure}
 
 \end{frame}
@@ -341,7 +350,7 @@
             \end{figure}
         \column{0.55\textwidth}
             \begin{itemize}
-                \item Aproximación de la distribución de probabilidad de huellas - $P(\mu,\sigma)$
+                \item Aproximación de la distribución de probabilidad de las huellas - $P(\mu,\sigma)$
                 \vspace{10mm}
                 \item Regularización que disminuye el overfitting del modelo.
             \end{itemize}
@@ -354,6 +363,7 @@
 
     \begin{itemize}
         \setlength\itemsep{5mm}
+        \item Iterar para encontrar el equilibrio de parámetros que permita obtener un mejor desempeño del modelo.
         \item Desarrollo de algoritmos más sofisticados para el deterioro artificial teniendo como referencia modificaciones reales en las huellas.
         \item Utilizar la binarización proporcionada por el SDK de NeuroTec como la imagen objetivo de la reconstrucción.
     \end{itemize}

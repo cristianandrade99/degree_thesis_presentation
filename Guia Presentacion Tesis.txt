@@ -50,10 +50,6 @@ Como alternativa a la arquitectura se propuso añadir la divergencia KL a la fun
 
 Al minimizar esta función se busca que el generador se ajuste a la distribución de probabilidad de los huellas, lo que puede resultar en una mejor reconstrucción. Adicionalmente, disminuye el overfiting del sistema, lo que quiere decir que se evita que el modelo solo reconstruya correctamente las huellas de entrenamiento y no las de la implementación real.
 
-inferencia bayesiana
-
-Este término utilizado en el campo de la inferencia bayesiana se calcula 
-
 16 - [Trabajo futuro]
 
 Se podrían desarrollar algoritmos más sofisticados para el deterioro de las huellas de tal manera que se cuente con datos de entrenamiento más reales.
