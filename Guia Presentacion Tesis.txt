@@ -6,6 +6,8 @@
 
 3 - [Red neuronal convolucional] Para solucionar este problema decidí implementar una red neural convolucional que reconstruye y restaura huellas dactilares digitales que se encuentran deterioradas.
 
+4 - [Modelos generativos adversariales] Estos modelos están se utilizando por ejemplo para aumentar la resolución de las imágenes con lo que se puede mejorar la información que estas contienen. Los dos rostros de la derecha corresponden a dos personas que no existen, es decir fueron construidos por un modelo generativo adversarial.
+
 4 - [Imagen digital] Para comenzar quiero que recordemos qué es una imagen digital. Una imagen digital es un conjunto de píxeles agrupados uno al lado de otro formando una estructura que generalmente es rectangular. En una impresión dactilar cada píxel es un valor numérico que indica la cantidad de color blanco o negro hay en la imagen.
 
 5 - [Convolución] El modelo procesa las huellas a través de la convolución. La convolución es una operación matemática en la que se utiliza un filtro para modificar la imagen. En dicha operación se multiplican y se suman los parámetros del filtro y los pixeles de una región de imagen original. Este proceso se repite por toda la imagen para obtener cada uno de los pixeles de la imagen procesada. 
